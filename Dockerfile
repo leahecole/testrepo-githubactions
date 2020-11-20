@@ -1,4 +1,4 @@
-FROM python:3.8
+FROM python:3.9
 
 # Allow statements and log messages to immediately appear in the Cloud Run logs
 ENV PYTHONUNBUFFERED True
