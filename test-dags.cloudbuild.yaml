@@ -1,0 +1,11 @@
+steps:
+  # build the docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/leah-playground/cicd:${SHORT_SHA}', '.'] # tag docker image with commit sha
+    id: 'docker build'
+  # run the dag tests
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['run', 'gcr.io/leah-playground/cicd:${SHORT_SHA}']
+    id: 'test-dags'
+
+timeout: 3600s #1 hour timeout accommodates the long running Composer upgrade operation
